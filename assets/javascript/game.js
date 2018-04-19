@@ -49,17 +49,19 @@ var computerWord = computerChoices[Math.floor(Math.random() * computerChoices.le
         }
         // check to make sure only one key was pressed
         else if (userGuess.length !== 1){
-          alert("You can only enter one letter at a time.");
+          alert("Please enter one character.");
         }
         else {
           for (j = 0; j < computerWord.length; j++){
             if (computerWord[j] === userGuess){
               guessArray[j] = userGuess;
             }
-            else {
+            
+              alert(userGuess + " is not in the word");
               userHistory.push(userGuess);
               tries--;
-            }
+              break;
+        
           }
           
         }
