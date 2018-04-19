@@ -1,7 +1,7 @@
 <!DOCTYPE <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
+    <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Page Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,18 +14,65 @@
     <script src="assets/javascript/game.js"></script>
 </head>
 <body>
+    <audio autoplay="autoplay">
+        <source src="assets/sounds/tng_bridge_1.mp3" type="audio/mpeg">
+    </audio>
     <div class="container">
         <div class="jumbotron">
-            <h1 class="text-center, text-primary">
-                Star Trek: The Next Generation Word Game!
+            <h1 class="text-primary">
+                Star Trek: The Next Generation Word Game
             </h1>    
         </div>
-        <div id="game">
-            <p>
-                Hit any key to start the game!
-            </p>
-            <!--javascript render-->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <p>
+                        Access Word Entry:
+                    </p>
+                    <p id="gamegrid">
+                    </p>
+                </div>
+            </div>
         </div>
+        <div class="row">
+            <div class="col-md-12">
+                <p></p>
+                <!--blank for spacing-->
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <p id="counter">
+                        Guesses Left:
+                    </p>
+                </div>
+            </div>
+            <div class="col-sm-5">
+                <div class="card">
+                    <p>
+                        Type a letter (then press guess)
+                    </p>
+                    <p>
+                        <input id="guess" type="text">
+                    </p>
+                    <p>
+                        <input type="button" value="guess" onClick="try()"/>
+                        <input type="button" value="quit" onClick="quit()"/>
+                    </p>
+                    <p id="message">
+                        &nbsp;
+                    </p>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <p id="letterhistory">
+                        Letter history:
+                    </p>
+                </div>       
+            </div>
     </div>
+    <script src="assets/javascript/game.js"></script>
 </body>
 </html>

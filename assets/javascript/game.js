@@ -14,77 +14,19 @@ var computerChoices = ["picard", "data", "1701d", "holodeck", "borg", "klingon",
 
 // Creating variables to hold the number of tries, user guesses, and building the blank spaces for the random word.
 
-var tries = 10;
+var maxTries = 10;
 var userHistory = [];
 var guessArray = [];
 
-// Randomly chooses a choice from the options array. This is the Computer's guess.
-var computerWord = computerChoices[Math.floor(Math.random() * computerChoices.length)];
-      console.log(computerWord.length);
+function preGame(){
+  // Randomly chooses a choice from the options array. This is the Computer's guess.
+  var computerWord = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+  //Build solution array
+  for (var i = 0; i < computerWord.length; i++){
+    guessArray[i] = "_";
+  }
+    document.getElementById("gamegrid").innerHTML= guessArray.join(" ");
+    document.getElementById("message").innerHTML= "Enter a letter then press guess, or press quit to stop playing."
+}
+preGame();
 
-    // This function is run whenever the user presses a key.
-    document.onkeyup = function(event) {
-      
-      // Build the number of slots for the random word
-      for (var i = 0; i < computerWord.length; i++){
-        guessArray[i] = "_";
-      }
-      
-      // Game progress, we must display the game grid and error-check user input
-      // There are three options and an action:
-      // 1. Exit the game immediately
-      // 2. Check to see if only one letter is entered
-      // 3. Check to see they did enter something! 
-      // Action: If user enter a character, update the game with the user guess
-
-      while (tries > 0){
-        // Display the gaming grid and where the player will start from
-        var userProgress = document.getElementById("game");
-        // Remove the commas and add a space between each dash
-        userProgress.innerHTML = guessArray.join(" ");
-        var userGuess = prompt("Guess a letter, or click Cancel to quit"); 
-        // If user click on cancel, exit the game
-        if (userGuess === null){
-          break;
-        }
-        // check to make sure only one key was pressed
-        else if (userGuess.length !== 1){
-          alert("Please enter one character.");
-        }
-        else {
-          for (j = 0; j < computerWord.length; j++){
-            if (computerWord[j] === userGuess){
-              guessArray[j] = userGuess;
-            }
-            
-              alert(userGuess + " is not in the word");
-              userHistory.push(userGuess);
-              tries--;
-              break;
-        
-          }
-          
-        }
-      }
-        console.log(guessArray);
-        console.log(computerWord);
-        userHistory.push(userGuess);
-        console.log(userHistory);
-
-
-      // Reworked our code from last step to use "else if" instead of lots of if statements.
-
-      // This logic determines the outcome of the game (win/loss/tie), and increments the appropriate number
-      
-      // Creating a variable to hold our new HTML. Our HTML now keeps track of the user and computer guesses, and wins/losses/ties.
-        var html =
-          "<p>You chose: " + userGuess + "</p>";
-          // "<p>The computer chose: " + computerGuess + "</p>" +
-          // "<p>wins: " + wins + "</p>" +
-          // "<p>losses: " + losses + "</p>" +
-          // "<p>ties: " + ties + "</p>";
-
-        // Set the inner HTML contents of the #game div to our html string
-        // document.querySelector("#game").innerHTML = html;
-        
-      }

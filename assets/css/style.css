@@ -4,4 +4,13 @@ body {
 
 .jumbotron {
     background-image: url('../images/stars.jpg');
+    text-align: center;
+}
+
+.card {
+    text-align: center;
+}
+
+.txt {
+    text-align: center;
 }
