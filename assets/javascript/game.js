@@ -1,13 +1,14 @@
 
 // What has to be done:
-// Computer waits for the user to start the game
 // Computer randomly selects a word from a list
 // Computer displays the word with the letters hidden, using underscores in the place for each letter
 // User selects a letter (check the user input)
 // Computer reduces the letter to lowercase if the user enters a capitol letter
 // Computer checks the letter to see if that letter is in the word
 // If the letter is in the word, it displays the letter in 'the hidden word'
-// If the letter is not in the word, it displays the letter in 'letters tried' and take away 1 try
+// If the letter is not in the word, it displays the letter in 'letters history' and take away 1 guess away
+// If there are no more guess, game over
+// If the user solves the word, game over
 
 // array of word choices
 var computerChoices = ["picard", "data", "1701d", "holodeck", "borg", "klingon", "traveler", "starfleet", "starbase", "stardate", "jefferiestube", "warp", "vulcan", "romulan", "tasha", "geordi", "crusher", "troi", "wessley", "barkley", "riker", "galaxyclass", "constitutionclass", "transporters", "phasers", "photon", "worf", "bridge", "engineering", "tenforward", "isolinear", "computer", "cargobay", "riza", "commander", "captain", "numberone", "readyroom", "turbolift", "shuttlecraft", "quarters", "replicator", "primedirective", "deltaquadrant", "alphaquadrant", "admiral", "command", "cloak", "warbird", "roddenberry", "franks", "wheaton", "mcfadden", "stewart", "spiner", "burton", "laforge", "positronic", "security", "sheilds", "dorn", "gamaquadrant"];
@@ -37,10 +38,11 @@ preGame(); // initialize the game
 function fail() {
     document.getElementById("status").innerHTML = "Access Denied!"
     document.getElementById("counter").innerHTML = guessLeft;
+    document.getElementById("end").play();
 }
 
 function logic(){
-  var guess = document.getElementById("guess").value;
+  var guess = document.getElementById("guess").value.toLowerCase();
   var updatedStatus = ""; // track the changes to status message
 
   if (guessLeft === 0){
@@ -48,48 +50,57 @@ function logic(){
   }
 
   if (guess.length !== 1){
+    document.getElementById("unknown").play();
     updatedStatus = "You can only enter one letter";
   }
   else {
     for (i = 0; i < computerWord.length; i++){
       if (computerWord[i] === guess){
+        document.getElementById("correct").play();
         guessArray[i] = guess;
         updatedStatus = guess + " is in the access code word";
       }
     }
 
-  // set a variable with a value of unguessed letters
-  var whatsLeft = guessArray.length;
+    // set a variable with a value of unguessed letters
+    var whatsLeft = guessArray.length;
 
-  // count the number of remaining missing letters
-  for (i = 0; i < guessArray.length; i++) {
-    if (guessArray[i] !== '_') {
+    // count the number of remaining missing letters
+    for (i = 0; i < guessArray.length; i++) {
+      if (guessArray[i] !== '_') {
         whatsLeft -= 1;
+      }
     }
-  }
 
-  // check to see if the puzzle has been solved
+    // check for any remaining letters to be uncovered
     if (whatsLeft == 0) {
-        updatedStatus = "Access Granted";
+      document.getElementById("win").play();
+      updatedStatus = "Access Granted";
     }
 
-    // (otherwise) if we have no message, wrong guess 
+    // Fallback to no match
     if (updatedStatus === "") {
+      document.getElementById("error").play();
       updatedStatus = "Sorry, no " + guess;
       guessLeft -= 1;
     }
 
+    // Update the array for letters tried
     userHistory.push(guess);
 
-    // Update the puzzle
+    // Update the screen
     document.getElementById("gamegrid").innerHTML = guessArray.join(" ");
 
     // Clear out the previous entry
     document.getElementById("guess").value = "";
   }
+
+  // Check to see if there are any more tries left
   if (guessLeft === 0){
     return fail();
   }
+
+  // otherwise update the screen
   else {
     document.getElementById("counter").innerHTML = guessLeft;
     document.getElementById("status").innerHTML = updatedStatus;
@@ -106,5 +117,6 @@ function quit() {
 
 // Refresh the page when user click on reboot button
 function reboot() {
+  document.getElementById("playgame").play();
   location.reload();
 }
