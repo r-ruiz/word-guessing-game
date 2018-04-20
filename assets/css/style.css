@@ -14,3 +14,7 @@ body {
 .txt {
     text-align: center;
 }
+
+.container {
+    background-color: #F8F9F9;
+}
