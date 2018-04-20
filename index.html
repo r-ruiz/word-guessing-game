@@ -1,9 +1,9 @@
-<!DOCTYPE <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Page Title</title>
+    <title>star Trek Game</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="assets/css/reset.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -11,13 +11,14 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
     <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
-    <script src="assets/javascript/game.js"></script>
 </head>
 <body>
-    <audio autoplay="autoplay">
-        <source src="assets/sounds/tng_bridge_1.mp3" type="audio/mpeg">
-    </audio>
-    <div class="container">
+    <div id="song">
+        <audio autoplay>
+            <source src="assets/sounds/bridge.mp3" type="audio/mpeg" />
+        </audio>
+    </div>
+    <div class="container border pb-4 pt-4 mt-5">
         <div class="jumbotron">
             <h1 class="text-primary">
                 Star Trek: The Next Generation Word Game
@@ -29,8 +30,9 @@
                     <p>
                         Access Word Entry:
                     </p>
-                    <p id="gamegrid">
-                    </p>
+                    <h1 id="gamegrid">
+                        <!--javascript supplies the hidden word-->
+                    </h1>
                 </div>
             </div>
         </div>
@@ -43,32 +45,39 @@
         <div class="row">
             <div class="col">
                 <div class="card">
-                    <p id="counter">
+                    <h5>
                         Guesses Left:
+                    </h5>
+                    <p id="counter">
+                        <!--javascript updates tries left here-->
                     </p>
                 </div>
             </div>
             <div class="col-sm-5">
                 <div class="card">
-                    <p>
+                    <h5>
                         Type a letter (then press guess)
-                    </p>
+                    </h5>
                     <p>
                         <input id="guess" type="text">
                     </p>
                     <p>
-                        <input type="button" value="guess" onClick="try()"/>
-                        <input type="button" value="quit" onClick="quit()"/>
+                        <input type="button" value="guess" onClick="logic()" />
+                        <input type="button" value="quit" onClick="quit()" />
+                        <input type="button" value="reboot" onClick="reboot()" />
                     </p>
-                    <p id="message">
-                        &nbsp;
+                    <p id="status">
+                        <!--javascript updates messages here-->
                     </p>
                 </div>
             </div>
             <div class="col">
                 <div class="card">
-                    <p id="letterhistory">
+                    <h5>
                         Letter history:
+                    </h5>
+                    <p id="letterhistory">
+                        <!--javascript updates letter history here-->
                     </p>
                 </div>       
             </div>
