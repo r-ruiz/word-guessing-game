@@ -30,6 +30,7 @@ function preGame(){
     document.getElementById("gamegrid").innerHTML = guessArray.join(" ");
     document.getElementById("status").innerHTML = "Enter a letter then press guess, or press quit to give up, or press reboot for new word.";
     document.getElementById("counter").innerHTML= 10;
+    document.getElementById("guess").focus();
 }
 
 preGame(); // initialize the game
@@ -105,6 +106,7 @@ function logic(){
     document.getElementById("counter").innerHTML = guessLeft;
     document.getElementById("status").innerHTML = updatedStatus;
     document.getElementById("letterhistory").innerHTML = userHistory;
+    document.getElementById("guess").focus(); //return focus to the input field
   }
   
 }
@@ -117,6 +119,5 @@ function quit() {
 
 // Refresh the page when user click on reboot button
 function reboot() {
-  document.getElementById("playgame").play();
   location.reload();
 }

@@ -32,9 +32,6 @@
         <audio id="win">
             <source src="assets/sounds/complete.mp3" type="audio/mpeg">
         </audio>
-        <audio id="playgame">
-            <source src="assets/sounds/code.mp3" type="audio/mpeg">
-        </audio>
     </div>
     <div class="container border pb-4 pt-4 mt-5 ">
         <div class="jumbotron">
@@ -71,34 +68,34 @@
                     </p>
                 </div>
             </div>
-            <div class="col-sm-5">
-                <div class="card">
-                    <h5>
-                        Type a letter (then press guess)
-                    </h5>
-                    <p>
-                        <input id="guess" type="text">
-                    </p>
-                    <p>
-                        <input type="button" value="guess" onClick="logic()" />
-                        <input type="button" value="quit" onClick="quit()" />
-                        <input type="button" value="reboot" onClick="reboot()" />
-                    </p>
-                    <p id="status">
-                        <!--javascript updates messages here-->
-                    </p>
-                </div>
+        <div class="col-sm-5">
+            <div class="card">
+                <h5>
+                    Type a letter (then press guess)
+                </h5>
+                <p>
+                    <input id="guess" type="text">
+                </p>
+                <p>
+                    <input type="button" value="guess" onClick="logic()" />
+                    <input type="button" value="quit" onClick="quit()" />
+                    <input type="button" value="reboot" onClick="reboot()" />
+                </p>
+                <p id="status">
+                    <!--javascript updates messages here-->
+                </p>
             </div>
-            <div class="col">
-                <div class="card">
-                    <h5>
-                        Letter History:
-                    </h5>
-                    <p id="letterhistory">
-                        <!--javascript updates letter history here-->
-                    </p>
-                </div>       
-            </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <h5>
+                    Letter History:
+                </h5>
+                <p id="letterhistory">
+                    <!--javascript updates letter history here-->
+                </p>
+            </div>       
+        </div>
     </div>
     <script src="assets/javascript/game.js"></script>
 </body>
