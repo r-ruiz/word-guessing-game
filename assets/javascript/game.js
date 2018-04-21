@@ -11,7 +11,7 @@
 // If the user solves the word, game over
 
 // array of word choices
-var computerChoices = ["picard", "data", "1701d", "holodeck", "borg", "klingon", "traveler", "starfleet", "starbase", "stardate", "jefferiestube", "warp", "vulcan", "romulan", "tasha", "geordi", "crusher", "troi", "wessley", "barkley", "riker", "galaxyclass", "constitutionclass", "transporters", "phasers", "photon", "worf", "bridge", "engineering", "tenforward", "isolinear", "computer", "cargobay", "riza", "commander", "captain", "numberone", "readyroom", "turbolift", "shuttlecraft", "quarters", "replicator", "primedirective", "deltaquadrant", "alphaquadrant", "admiral", "command", "cloak", "warbird", "roddenberry", "franks", "wheaton", "mcfadden", "stewart", "spiner", "burton", "laforge", "positronic", "security", "sheilds", "dorn", "gamaquadrant"];
+var computerChoices = ["picard", "data", "1701d", "holodeck", "borg", "klingon", "traveler", "starfleet", "starbase", "stardate", "jefferies-tube", "warp", "vulcan", "romulan", "tasha", "geordi", "crusher", "troi", "wessley", "barkley", "riker", "galaxy-class", "constitution-class", "transporters", "phasers", "photon", "worf", "bridge", "engineering", "ten-forward", "iso-linear", "computer", "cargobay", "riza", "commander", "captain", "number-one", "ready-room", "turbolift", "shuttlecraft", "quarters", "replicator", "prime-directive", "delta-quadrant", "alpha-quadrant", "admiral", "command", "cloak", "warbird", "roddenberry", "franks", "wheaton", "mcfadden", "stewart", "spiner", "burton", "laforge", "positronic", "security", "sheilds", "dorn", "gamma-quadrant"];
 
 // Creating variables to hold the number of tries, global random word, user guesses, and building the blank spaces for the random word.
 
@@ -30,7 +30,7 @@ function preGame(){
     document.getElementById("gamegrid").innerHTML = guessArray.join(" ");
     document.getElementById("status").innerHTML = "Enter a letter then press guess, or press quit to give up, or press reboot for new word.";
     document.getElementById("counter").innerHTML= 10;
-    document.getElementById("guess").focus();
+    document.getElementById("guess").focus(); //set focus for user input
 }
 
 preGame(); // initialize the game
@@ -113,6 +113,7 @@ function logic(){
 
 // End the game and show the answer
 function quit() {
+  document.getElementById("quit").play();
   document.getElementById("status").innerHTML = "The access code word was " + computerWord;
   document.getElementById("gamegrid").innerHTML = computerWord;
 }
